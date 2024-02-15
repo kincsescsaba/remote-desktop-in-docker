@@ -13,6 +13,10 @@ ADD xfce4-panel.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.x
 
 RUN chmod +x /entry.sh
 
+RUN openssl req -x509 -newkey rsa:2048 -nodes -keyout /etc/xrdp/key.pem -out /etc/xrdp/cert.pem -days 365 ; \
+  chmod 600 /etc/xrdp/key.pem ; \
+  chmod 600 /etc/xrdp/cert.pem
+
 ENV DISPLAY :0
 ENV RESOLUTION=1024x768
 
